@@ -41,7 +41,7 @@ class AuthController extends Controller
                 'message' => 'User tidak ditemukan',
                 'code' => '400'
             ], 400);
-        }else if(!Hash::check($user->password, $request->password)){
+        }else if(!Hash::check($request->password, $user->password)){
             return response()->json([
                 'message' => 'Password tidak sesuai',
                 'code' => '400'
