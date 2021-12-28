@@ -18,8 +18,12 @@ class AuthController extends Controller
             ], 401);
         }
 
-        $request->password = Hash::make($request->password);
-        $upload = User::create($request->all());
+        $passwordHash = Hash::make($request->password);
+        $upload = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $passwordHash
+        ]);
 
         return response()->json([
             'message' => 'User berhasil didaftarkan',
