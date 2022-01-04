@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    
+
     public function register(Request $request)
     {
         $user = User::where('email', $request->email)->first();
@@ -56,4 +58,5 @@ class AuthController extends Controller
             'token' => $token
         ], 200);
     }
+
 }
